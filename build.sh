@@ -4,7 +4,7 @@
 
 # capture root dir
 root=$(pwd)
-prefix=/app/vendor
+prefix=/app/vendor/vips
  
 # change into subdir of archive
 cd $root/vips-*
@@ -14,7 +14,7 @@ cd $root/vips-*
 
 # fix Makefile for gnu make
 cat Makefile | sed -e 's/^\.//g' > /tmp/Makefile; mv /tmp/Makefile Makefile
- 
+
 # make dirs
 mkdir -p $prefix/bin
 mkdir -p $prefix/man/man1
@@ -27,4 +27,4 @@ make install
 rm -rf $root/*
 
 # copy build artifacts back into the root
-mv /app/vendor $root/
+mv $prefix $root/

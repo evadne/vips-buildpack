@@ -5,8 +5,8 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 PACK_ROOT=$(cd $(dirname $0); cd ..; pwd)
-BUNDLE_URL='https://api.anvilworks.org/slugs/52e3b99a-32d4-417a-9a2a-c4ec9a5027da.tgz'
-BUNDLE_CACHE="$CACHE_DIR/vips-7.40-52e3b99a-32d4-417a-9a2a-c4ec9a5027da.tar.gz"
+BUNDLE_URL='https://api.anvilworks.org/slugs/c0687021-c2f2-43bc-870a-b3a963c231de.tgz'
+BUNDLE_CACHE="$CACHE_DIR/vips-7.40-c0687021-c2f2-43bc-870a-b3a963c231de.tar.gz"
 
 echo "-----> Installing VIPS 7.40"
 cd $BUILD_DIR

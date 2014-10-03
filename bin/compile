@@ -4,6 +4,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
+PACK_ROOT=$(cd $(dirname $0); cd ..; pwd)
 BUNDLE_URL='https://api.anvilworks.org/slugs/52e3b99a-32d4-417a-9a2a-c4ec9a5027da.tgz'
 BUNDLE_CACHE="$CACHE_DIR/vips-7.40-52e3b99a-32d4-417a-9a2a-c4ec9a5027da.tar.gz"
 
@@ -20,11 +21,7 @@ mkdir -p vendor/vips
 tar -C vendor/vips --strip=2 -xf $BUNDLE_CACHE > /dev/null
 
 mkdir -p .profile.d
-cat >.profile.d/vips.sh <<EOL
-export PATH=$HOME/vendor/vips/bin:$PATH
-export PKG_CONFIG_PATH=$HOME/vendor/vips/lib/pkgconfig:$PKG_CONFIG_PATH
-export LD_LIBRARY_PATH=$HOME/vendor/vips/lib:$LD_LIBRARY_PATH
-EOL
+cp $PACK_ROOT/profile .profile.d/vips.sh
 
 chmod +x .profile.d/vips.sh
 source .profile.d/vips.sh

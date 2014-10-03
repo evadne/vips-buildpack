@@ -5,6 +5,7 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 PACK_ROOT=$(cd $(dirname $0); cd ..; pwd)
+TEMP_APP_ROOT="/app" # this is to placate native extension compilation
 BUNDLE_URL='https://api.anvilworks.org/slugs/c0687021-c2f2-43bc-870a-b3a963c231de.tgz'
 BUNDLE_CACHE="$CACHE_DIR/vips-7.40-c0687021-c2f2-43bc-870a-b3a963c231de.tar.gz"
 
@@ -19,6 +20,12 @@ fi
 
 mkdir -p vendor/vips
 tar -C vendor/vips --strip=2 -xf $BUNDLE_CACHE > /dev/null
+
+mkdir -p $TEMP_APP_ROOT/vendor/vips
+tar -C $TEMP_APP_ROOT/vendor/vips --strip=2 -xf $BUNDLE_CACHE > /dev/null
+
+mkdir -p $HOME/vendor/vips
+tar -C $HOME/vendor/vips --strip=2 -xf $BUNDLE_CACHE > /dev/null
 
 mkdir -p .profile.d
 cp $PACK_ROOT/profile .profile.d/vips.sh

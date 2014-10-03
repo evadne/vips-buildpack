@@ -1,6 +1,6 @@
 # VIPS Buildpack
 
-Grabs the latest Anvil artifact (see `build.sh`) for VIPS 7.40
+Grabs the latest Anvil artifact (see `build.sh`) for VIPS 7.40.
 
 ## Environment
 

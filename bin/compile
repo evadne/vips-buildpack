@@ -18,3 +18,13 @@ fi
 
 mkdir -p vendor/vips
 tar -C vendor/vips --strip=2 -xf $BUNDLE_CACHE > /dev/null
+
+mkdir -p .profile.d
+cat >.profile.d/vips.sh <<EOL
+export PATH=$HOME/vendor/vips/bin:$PATH
+export PKG_CONFIG_PATH=$HOME/vendor/vips/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$HOME/vendor/vips/lib:$LD_LIBRARY_PATH
+EOL
+
+chmod +x .profile.d/vips.sh
+source .profile.d/vips.sh

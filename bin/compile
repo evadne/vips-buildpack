@@ -21,11 +21,19 @@ fi
 mkdir -p vendor/vips
 tar -C vendor/vips --strip=2 -xf $BUNDLE_CACHE > /dev/null
 
+
+# HACK: Store copies in $TEMP_APP_ROOT and $HOME
+# so later on native extensions can be compiled
+# using the same prefix
+
 mkdir -p $TEMP_APP_ROOT/vendor/vips
 tar -C $TEMP_APP_ROOT/vendor/vips --strip=2 -xf $BUNDLE_CACHE > /dev/null
 
 mkdir -p $HOME/vendor/vips
 tar -C $HOME/vendor/vips --strip=2 -xf $BUNDLE_CACHE > /dev/null
+
+# END HACK
+
 
 mkdir -p .profile.d
 cp $PACK_ROOT/profile .profile.d/vips.sh

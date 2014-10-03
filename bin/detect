@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "VIPS 7.40"
+exit 0

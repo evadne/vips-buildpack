@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+BUNDLE_URL='https://api.anvilworks.org/slugs/52e3b99a-32d4-417a-9a2a-c4ec9a5027da.tgz'
+BUNDLE_CACHE="$CACHE_DIR/vips-7.40-52e3b99a-32d4-417a-9a2a-c4ec9a5027da.tar.gz"
+
+echo "-----> Installing VIPS 7.40"
+cd $BUILD_DIR
+
+if ! [ -f "$BUNDLE_CACHE" ]; then
+  echo "       Downloading built binary"
+  mkdir -p $CACHE_DIR
+  curl $BUNDLE_URL -o $BUNDLE_CACHE -s -ssl3
+fi
+
+mkdir -p vendor/vips
+tar -C vendor/vips --strip=2 -xf $BUNDLE_CACHE > /dev/null

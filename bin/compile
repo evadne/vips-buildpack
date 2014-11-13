@@ -15,7 +15,7 @@ cd $BUILD_DIR
 if ! [ -f "$BUNDLE_CACHE" ]; then
   echo "       Downloading built binary"
   mkdir -p $CACHE_DIR
-  curl $BUNDLE_URL -o $BUNDLE_CACHE -s -ssl3
+  curl $BUNDLE_URL -o $BUNDLE_CACHE -s
 fi
 
 mkdir -p vendor/vips
